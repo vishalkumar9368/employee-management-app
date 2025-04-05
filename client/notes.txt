@@ -1,0 +1,7 @@
+// mesh gradients
+
+1) bg-[radial-gradient(circle_at_bottom,_#fdf2f8,_#fce7f3,_#f8fafc)]
+
+2) bg-[radial-gradient(circle_at_center,_#f8fafc,_#e2e8f0,_#dbeafe)]
+
+3) bg-[radial-gradient(circle_at_top_left,_#e0f2fe,_#ede9fe,_#f3e8ff)]
