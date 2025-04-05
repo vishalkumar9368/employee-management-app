@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   // states which will be updated after tht successful logn and logout
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState(
     localStorage.getItem("employeems_token") || null
   );
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (formData) => {
     try {
-      const response = await fetch("http://localhost:5000/auth/register", {
+      const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (formData) => {
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch(`${apiUrl}/auth/login`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

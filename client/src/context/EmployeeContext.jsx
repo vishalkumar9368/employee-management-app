@@ -5,7 +5,7 @@ export const EmployeeContext = createContext();
 
 export const EmployeeProvider = ({ children }) => {
   const { token } = useAuth();
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   // state to store all the records - this will be our main state and will not change on applying filter or searches
   const [allRecords, setAllRecords] = useState([]);
   const [filteredRecords, setFilteredRecords] = useState([]);
@@ -13,7 +13,7 @@ export const EmployeeProvider = ({ children }) => {
   // 1. function to get all records
   const getRecords = async () => {
     try {
-      const response = await fetch("http://localhost:5000/user", {
+      const response = await fetch(`${apiUrl}/user`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -41,7 +41,7 @@ export const EmployeeProvider = ({ children }) => {
   // 2. function to delete a record
   const deleteRecords = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/user/${id}`, {
+      const response = await fetch(`${apiUrl}/user/${id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
@@ -62,7 +62,7 @@ export const EmployeeProvider = ({ children }) => {
   // 3. function to edit a record
   const editRecords = async (formData, id) => {
     try {
-      const response = await fetch(`http://localhost:5000/user/${id}`, {
+      const response = await fetch(`${apiUrl}/user/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
@@ -89,10 +89,10 @@ export const EmployeeProvider = ({ children }) => {
     }
   };
 
-  // 3. function to add a record
+  // 4. function to add a record
   const addRecord = async (formData) => {
     try {
-      const response = await fetch("http://localhost:5000/user", {
+      const response = await fetch(`${apiUrl}/user`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
